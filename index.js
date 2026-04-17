@@ -60,13 +60,19 @@ app.post("/new/posts", (req, res) => {
 app.patch("/posts/:id", (req, res) => {
     const {id} = req.params;
     let content=req.body.content;
-    const post = posts.find(p => p.id === id);
+    let post = posts.find(p => p.id === id);
     if (post) {
         post.content = content;
         res.redirect("/");
     } else {
         res.status(404).json({ message: "Post not found" });
     }
+});
+app.delete("/posts/:id", (req, res) => {
+    const { id } = req.params;
+    posts = posts.filter(p => p.id !== id);
+    res.redirect("/");
+    
 });
 
 
