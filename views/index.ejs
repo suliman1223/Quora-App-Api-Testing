@@ -4,8 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <h1>Quora App</h1>
+    <% for (const element of posts) { %>
+        <div class="details">
+            
+            <h2 class="user"><%= element.username %></h2>
+            <p class="content"><%= element.content %></p>
+            <a href="http://localhost:8080/posts/<%= element.id %>">View Details</a>
+        </div>
+    <% } %>
+
+    <a href="http://localhost:8080/posts">Create a New post</a>
 </body>
 </html>
